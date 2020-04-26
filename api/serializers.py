@@ -18,3 +18,9 @@ class MailSerializer(serializers.Serializer):
     author = UserSerializer()
     receiver = UserSerializer()
 
+class DraftSerializer(serializers.Serializer):
+    id = serializers.IntegerField(required=False)
+    title = serializers.CharField()
+    text = serializers.CharField()
+    author = UserSerializer()    
+

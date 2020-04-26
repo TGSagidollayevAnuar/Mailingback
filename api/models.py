@@ -12,3 +12,8 @@ class Mail(models.Model):
     text = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name="author")
     receiver = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name="receiver")
+ 
+class Draft(models.Model):
+    title = models.CharField(max_length=40)
+    text = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)    

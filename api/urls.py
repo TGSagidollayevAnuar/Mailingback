@@ -9,5 +9,7 @@ urlpatterns = [
     path('user/login/', obtain_jwt_token),
     path('user/signin/', views.UserView.as_view()),
 
+    path('user/<int:id>/', views.user_actions),
+    path('mail/drafts/', views.drafts),
     
 ]

@@ -54,3 +54,26 @@ def user_actions(request, id):
         user.name = request.data.get('username')
         user.save()
 
+@api_view(['GET', 'POST'])
+def drafts(request):
+    if request.method == 'GET':
+        try:
+            drafts = Draft.objects.all()
+        except:
+            return JsonResponse({"cant do that":""}, safe=False)
+        serializer = DraftSerializer(drafts, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        # try:
+        author = User.objects.get(name=request.data.get('author'))
+        # except:
+        #     return JsonResponse({"cant do that":""}, safe=False)
+        
+        Draft.objects.create(
+            title = request.data.get('title'),
+            text = request.data.get('text'),
+            author = author
+        )
+
+        return JsonResponse({"done":""}, safe=False)
