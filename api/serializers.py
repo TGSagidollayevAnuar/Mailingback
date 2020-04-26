@@ -11,3 +11,10 @@ class ManagerSerializer(serializers.ModelSerializer):
         model = Manager
         fields = 'id', 'username'
 
+class MailSerializer(serializers.Serializer):
+    id = serializers.IntegerField(required=False)
+    title = serializers.CharField()
+    text = serializers.CharField()
+    author = UserSerializer()
+    receiver = UserSerializer()
+

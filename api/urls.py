@@ -6,6 +6,8 @@ urlpatterns = [
     path('mail/', views.MailView.as_view()),
     path('user/', views.UserView.as_view()),
 
-   
+    path('user/login/', obtain_jwt_token),
+    path('user/signin/', views.UserView.as_view()),
+
     
 ]
